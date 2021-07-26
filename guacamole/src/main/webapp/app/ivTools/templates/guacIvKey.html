@@ -1,0 +1,23 @@
+<div>
+    <div ng-if="!showtooltip" style="float: right">
+        <button class="key" ng-click="updateKey()" ng-class="{pressed: pressed, sticky: sticky}">
+            <img src="{{imageurl}}" ng-if="showBtnImage && !showPressedBtnImage" style="width: 30px; height: 30px; color: white;" />
+            <div ng-if="showBtnImage && showPressedBtnImage">
+                <img src="{{imageurl}}" ng-if="!pressed" style="width: 30px; height: 30px; color: white;" />
+                <img src="{{pressedimageurl}}" ng-if="pressed" style="width: 30px; height: 30px; color: white;" />
+            </div>
+            <div ng-if="!!text">{{text | translate}}</div>
+        </button>
+    </div>
+    <div ng-if="showtooltip" style="float: right">
+        <abbr title="{{text | translate}}">
+            <button class="key" ng-click="updateKey()" ng-class="{pressed: pressed, sticky: sticky}">
+                <img src="{{imageurl}}" ng-if="showBtnImage && !showPressedBtnImage" style="width: 30px; height: 30px; color: white;" />
+                <div ng-if="showBtnImage && showPressedBtnImage">
+                    <img src="{{imageurl}}" ng-if="!pressed" style="width: 30px; height: 30px; color: white;" />
+                    <img src="{{pressedimageurl}}" ng-if="pressed" style="width: 30px; height: 30px; color: white;" />
+                </div>
+            </button>
+        </abbr>
+    </div>
+</div>

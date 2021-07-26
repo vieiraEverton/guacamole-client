@@ -20,8 +20,8 @@
 /**
  * The controller for the page used to connect to a connection or balancing group.
  */
-angular.module('client').controller('clientController', ['$scope', '$routeParams', '$injector',
-        function clientController($scope, $routeParams, $injector) {
+angular.module('client').controller('clientController', ['$scope', '$routeParams', '$injector', '$location',
+        function clientController($scope, $routeParams, $injector, $location) {
 
     // Required types
     var ManagedClient      = $injector.get('ManagedClient');
@@ -155,6 +155,24 @@ angular.module('client').controller('clientController', ['$scope', '$routeParams
         0x0208: true,
         0x0308: true
     };
+
+    /**
+     * Whether the UL mode parameter is passed in the URL to indicate 
+     * the current machine is an UL
+     * 
+     * @type Boolean
+     */
+    $scope.ulMode = false;
+
+    $scope.location = $location;
+    $scope.$watch('location.search()', function () {
+        var cUlModeVal = ($location.search()).ulMode;
+        if (!!cUlModeVal) {
+            if (cUlModeVal == '1') {
+                $scope.ulMode = true;
+            }
+        }
+    }, true);
 
     /**
      * Action which logs out from Guacamole entirely.
@@ -445,6 +463,7 @@ angular.module('client').controller('clientController', ['$scope', '$routeParams
         // Show input methods only if selected
         $scope.showOSK       = (inputMethod === 'osk');
         $scope.showTextInput = (inputMethod === 'text');
+        $scope.showIvtools   = (inputMethod === 'ivtools');
 
     });
 

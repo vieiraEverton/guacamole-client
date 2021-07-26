@@ -21,6 +21,11 @@
                     <guac-text-input needs-focus="showTextInput"></guac-text-input>
                 </div>
 
+                <!-- Innervision Tools -->
+                <div class="text-input-container" ng-show="showIvtools">
+                    <guac-iv-tools needs-focus="showTextInput"></guac-iv-tools>
+                </div>
+
                 <!-- On-screen keyboard -->
                 <div class="keyboard-container" ng-show="showOSK">
                     <guac-osk layout="'CLIENT.URL_OSK_LAYOUT' | translate"></guac-osk>
@@ -126,6 +131,12 @@
                         <div class="choice">
                             <label><input id="ime-osk" name="input-method" ng-change="closeMenu()" ng-model="menu.inputMethod" type="radio" value="osk"/> {{'CLIENT.NAME_INPUT_METHOD_OSK' | translate}}</label>
                             <p class="caption"><label for="ime-osk">{{'CLIENT.HELP_INPUT_METHOD_OSK' | translate}}</label></p>
+                        </div>
+
+                        <!-- Innervision Tools -->
+                        <div class="choice" ng-if="ulMode">
+                            <label><input id="ime-ivtools" name="input-method" ng-change="closeMenu()" ng-model="menu.inputMethod" type="radio" value="ivtools"/> {{'CLIENT.NAME_INNERVISION_TOOLS' | translate}}</label>
+                            <p class="caption"><label for="ime-osk">{{'CLIENT.HELP_INNERVISION_TOOLS' | translate}}</label></p>
                         </div>
 
                     </div>

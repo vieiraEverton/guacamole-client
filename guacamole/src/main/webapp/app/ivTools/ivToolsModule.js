@@ -18,18 +18,6 @@
  */
 
 /**
- * The module for code used to connect to a connection or balancing group.
+ * Module for displaying the Guacamole text input method.
  */
-angular.module('client', [
-    'auth',
-    'clipboard',
-    'element',
-    'history',
-    'navigation',
-    'notification',
-    'osk',
-    'rest',
-    'textInput',
-    'ivTools',
-    'touch'
-]);
+ angular.module('ivTools', []);
